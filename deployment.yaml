@@ -18,4 +18,4 @@ spec:
       - name: udagram-frontend
         image: ta9i/udagram-frontend
         ports:
-        - containerPort: 80
+        - containerPort: 8080
