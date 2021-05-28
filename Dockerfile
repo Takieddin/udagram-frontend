@@ -15,10 +15,10 @@ RUN npm install -g ionic
 
 # Copy app from local environment into the Docker image
 COPY . .
-RUN ng build --prod 
+RUN ionic build 
 
 # Set the API’s port number
 EXPOSE 8080
 
 # Define Docker’s behavior when the image  is run
-CMD ["ionic", "serve"]
+CMD ["ionic", "serve","--prod","--external"]
