@@ -21,4 +21,4 @@ RUN ionic build
 EXPOSE 8080
 
 # Define Docker’s behavior when the image  is run
-CMD ["ionic", "serve","--external"]
+CMD ["ionic", "serve","--external" ,"--disableHostCheck"]
