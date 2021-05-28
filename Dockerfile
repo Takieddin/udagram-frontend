@@ -1,5 +1,5 @@
 # Use NodeJS base image
-FROM node:13
+FROM node:latest
 
 # Create app directory in Docker
 WORKDIR /usr/src/app
@@ -21,4 +21,4 @@ RUN ionic build
 EXPOSE 8080
 
 # Define Docker’s behavior when the image  is run
-CMD ["ionic", "serve","--external" ,"--disableHostCheck"]
+CMD ["ng", "serve","--host" ,"0.0.0.0","--port","8100","--disableHostCheck","true"]
