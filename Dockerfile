@@ -1,10 +1,25 @@
-FROM node:13-alpine as build
-WORKDIR /app
-COPY package*.json /app/
-RUN npm install -g ionic
+
+# Use NodeJS base image
+FROM node:latest
+
+# Create app directory in Docker
+WORKDIR /usr/src/app
+
+# Install app dependencies by copying
+# package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies in Docker
 RUN npm install
-COPY ./ /app/
-RUN npm run-script build
-FROM nginx:alpine
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /app/www/ /usr/share/nginx/html/
+RUN npm install -g ionic
+
+
+# Copy app from local environment into the Docker image
+COPY . .
+RUN  npm  build
+
+# Set the API’s port number
+EXPOSE 8100
+
+# Define Docker’s behavior when the image  is run
+CMD ["npm", "start"]
